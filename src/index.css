@@ -2,14 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* AI To-Do List Design System - Productivity focused colors and gradients */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 240 20% 98%;
+    --foreground: 240 10% 15%;
+    
+    /* Task-specific colors */
+    --task-completed: 142 76% 36%;
+    --task-completed-foreground: 0 0% 100%;
+    --task-upcoming: 32 95% 44%;
+    --task-upcoming-foreground: 0 0% 100%;
+    --task-overdue: 0 84% 60%;
+    --task-overdue-foreground: 0 0% 100%;
+    --task-neutral: 240 9% 89%;
+    --task-neutral-foreground: 240 10% 15%;
+    
+    /* AI assistant colors */
+    --ai-primary: 262 83% 58%;
+    --ai-secondary: 252 83% 68%;
+    --ai-background: 252 83% 98%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(252 83% 68%));
+    --gradient-task: linear-gradient(135deg, hsl(240 20% 98%), hsl(240 15% 96%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 70% 45%));
+    --gradient-warning: linear-gradient(135deg, hsl(32 95% 44%), hsl(25 95% 53%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 75% 65%));
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -17,11 +37,11 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 240 15% 96%;
+    --secondary-foreground: 240 10% 15%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -101,5 +121,49 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-primary);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Task completion animation */
+  .task-complete {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .task-complete.completed {
+    @apply opacity-70 scale-95;
+  }
+  
+  /* Check animation */
+  .check-animation {
+    @apply transition-transform duration-200 ease-in-out;
+  }
+  
+  .check-animation:checked {
+    @apply scale-110;
+  }
+  
+  /* Task card hover effects */
+  .task-card {
+    @apply transition-all duration-200 ease-in-out hover:scale-[1.02] hover:shadow-lg;
+  }
+  
+  /* AI message animation */
+  .ai-message {
+    @apply animate-fade-in;
+    animation: slideInUp 0.3s ease-out;
+  }
+  
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
