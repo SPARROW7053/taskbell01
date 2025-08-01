@@ -1,24 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ai-do-list</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Theme Toggle -->
+        <div class="theme-toggle">
+            <button id="themeToggle" class="theme-btn">
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
 
-    <meta property="og:title" content="ai-do-list" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <div>
+                        <h1>AI To-Do List</h1>
+                        <p>Smart task management with alarms</p>
+                    </div>
+                </div>
+                <button id="addTaskBtn" class="add-btn">
+                    <i class="fas fa-plus"></i>
+                    Add Task
+                </button>
+            </div>
+        </header>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-card">
+                <i class="fas fa-target"></i>
+                <div>
+                    <span>Active Tasks</span>
+                    <strong id="activeCount">0</strong>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <span>Completed</span>
+                    <strong id="completedCount">0</strong>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-percentage"></i>
+                <div>
+                    <span>Success Rate</span>
+                    <strong id="successRate">0%</strong>
+                </div>
+            </div>
+        </div>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+        <!-- Settings Panel -->
+        <div class="settings-panel">
+            <h3><i class="fas fa-cog"></i> Settings</h3>
+            <div class="setting-item">
+                <label for="deleteDelay">Auto-delete completed tasks after:</label>
+                <select id="deleteDelay">
+                    <option value="12">12 hours</option>
+                    <option value="6">6 hours</option>
+                    <option value="24">24 hours</option>
+                    <option value="48">48 hours</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label for="colorTheme">Color Theme:</label>
+                <select id="colorTheme">
+                    <option value="blue">Blue</option>
+                    <option value="purple">Purple</option>
+                    <option value="green">Green</option>
+                    <option value="orange">Orange</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Task Lists -->
+        <div class="task-sections">
+            <div class="task-section">
+                <h2><i class="fas fa-clock"></i> Active Tasks <span class="count" id="activeTasksCount">0</span></h2>
+                <div id="activeTasks" class="task-list"></div>
+            </div>
+            <div class="task-section">
+                <h2><i class="fas fa-check"></i> Completed Tasks <span class="count" id="completedTasksCount">0</span></h2>
+                <div id="completedTasks" class="task-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task Form Modal -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-plus-circle"></i> Add New Task</h3>
+                <button id="closeModal" class="close-btn">&times;</button>
+            </div>
+            <form id="taskForm">
+                <div class="form-group">
+                    <label for="taskTitle">Task Title</label>
+                    <input type="text" id="taskTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskDescription">Description</label>
+                    <textarea id="taskDescription" rows="3"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="taskDate">Due Date</label>
+                        <input type="date" id="taskDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="taskTime">Due Time</label>
+                        <input type="time" id="taskTime">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="taskPriority">Priority</label>
+                    <select id="taskPriority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="cancelBtn">Cancel</button>
+                    <button type="submit">Add Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
