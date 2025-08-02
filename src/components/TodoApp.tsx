@@ -6,6 +6,8 @@ import { TaskForm } from './TaskForm';
 import { TaskList } from './TaskList';
 import { AIAssistant } from './AIAssistant';
 import { NotificationManager } from './NotificationManager';
+import { ColorCustomizer } from './ColorCustomizer';
+import { AlarmSettings } from './AlarmSettings';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { Task, TaskPriority } from '../types/task';
 
@@ -146,6 +148,10 @@ export const TodoApp = () => {
 
         {/* Notification Manager */}
         <NotificationManager tasks={activeTasks} />
+        
+        {/* Settings */}
+        <ColorCustomizer />
+        <AlarmSettings />
       </div>
     </div>
   );
