@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import { toast } from 'sonner';
+import { toast } from '@/components/ui/use-toast';
 
 interface AlarmSettings {
   soundType: 'beep' | 'custom' | 'built-in';
@@ -44,7 +44,10 @@ export const AlarmSettings = () => {
         soundType: 'custom', 
         customSoundUrl: url 
       }));
-      toast.success('Custom sound uploaded!');
+      toast({
+        title: "Success",
+        description: "Custom sound uploaded!"
+      });
     }
   };
 
@@ -131,7 +134,10 @@ export const AlarmSettings = () => {
 
   const saveSettings = () => {
     setSettings(tempSettings);
-    toast.success('Alarm settings saved!');
+    toast({
+      title: "Success",
+      description: "Alarm settings saved!"
+    });
     setIsOpen(false);
   };
 
@@ -267,7 +273,10 @@ export const AlarmSettings = () => {
             variant="outline" 
             onClick={() => {
               setTempSettings(defaultSettings);
-              toast.success('Reset to defaults');
+              toast({
+                title: "Success",
+                description: "Reset to defaults"
+              });
             }}
           >
             Reset
