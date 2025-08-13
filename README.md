@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/8a0af3bd-579e-4f2b-b603-c28c6be6176e
+**URL**: https://taskbell01.netlify.app/
 
 ## How can I edit this code?
 
